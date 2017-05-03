@@ -80,9 +80,11 @@ class ChangelogEntry
     }
     
     protected function getAuthor() {
-        $output = exec('git config user.name');
+        if (isset($this->options['git-username'])) {
+            $output = exec('git config user.name');
         
-        return trim($output);
+            return trim($output);
+        }
     }
     
     protected function getContent() {
