@@ -57,7 +57,7 @@ class ChangelogEntry
     }
     
     protected function getTitle() {
-        $title = implode('\r\n', $this->options->getArguments());
+        $title = implode(' ', $this->options->getArguments());
         
         if (strlen($title) > 1 ) {
             return $title;
