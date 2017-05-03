@@ -11,7 +11,7 @@ class ChangelogOptionParser
     public function parse($argv) {
 
         $specs = new OptionCollection;
-        $specs->add('ammend', 'Amend the previous commit' );
+        $specs->add('amend', 'Amend the previous commit' );
 
         $specs->add('f|force', 'Overwrite an existing entry' );
 
