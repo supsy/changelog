@@ -10,5 +10,10 @@ if (file_exists($a = __DIR__.'/../../../autoload.php')) {
 
 use Supsy\Changelog\Application;
 
-$application = new Application();
-$application->run();
+try {
+    $application = new Application();
+    $application->run();
+} catch( \Exception $e ) {
+    echo "\e[31merror\e[0m ".$e->getMessage()."\n";
+    exit(1);
+}
