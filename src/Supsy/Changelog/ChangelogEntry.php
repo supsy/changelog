@@ -34,8 +34,8 @@ class ChangelogEntry
         if(!isset($this->options['dry-run'])) {
             $this->write();
         }
-        if(isset($this->options['ammend'])) {
-            $this->ammend();
+        if(isset($this->options['amend'])) {
+            $this->amend();
         }
     }
     
@@ -61,7 +61,7 @@ class ChangelogEntry
         
         if (strlen($title) > 1 ) {
             return $title;
-        } elseif(isset($this->options['ammend'])) {
+        } elseif(isset($this->options['amend'])) {
             return $this->getLastCommitSubject();
         } else {
             throw new \Exception('Provide a title for the changelog entry or use `--amend` to use the title from the previous commit.');
@@ -74,9 +74,9 @@ class ChangelogEntry
         return trim($output);
     }
     
-    protected function ammend() {
+    protected function amend() {
         exec('git add '.$this->getFilePath());
-        system('git commit --amend');
+        passthru('git commit --amend');
     }
     
     protected function getAuthor() {
