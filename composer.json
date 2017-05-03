@@ -16,7 +16,8 @@
     },
     "require": {
         "php": ">=5.4",
-        "corneltek/getoptionkit": "^2.5"
+        "corneltek/getoptionkit": "^2.5",
+        "symfony/yaml": ">2.0"
     },
     "autoload": {
         "psr-4": {
