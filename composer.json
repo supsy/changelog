@@ -24,5 +24,10 @@
             "Supsy\\Changelog\\": "src/Supsy/Changelog"
         }
     },
-    "bin": ["bin/changelog"]
+    "bin": ["bin/changelog"],
+    "config": {
+        "platform": {
+            "php": "5.4.39"
+        }
+    }
 }
