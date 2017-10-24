@@ -21,7 +21,7 @@ class ApplicationTest extends TestCase
     {
         $application = $this->getApplication();
         
-        $this->expectException('Exception');
+        $this->setExpectedException("Exception");
         $application->run();
     }
     

@@ -21,7 +21,7 @@ class ChangelogEntryTest extends TestCase
     {
         $changelogEntry = $this->getChangelogEntry();
         
-        $this->expectException('Exception');
+        $this->setExpectedException("Exception");
         $changelogEntry->create();
     }
     
