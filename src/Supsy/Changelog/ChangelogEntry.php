@@ -12,6 +12,16 @@ class ChangelogEntry
 {
     
     const UNRELEASED_PATH = 'changelogs/unreleased';
+    const TYPES = array(
+        'added' => 'New feature',
+        'fixed' => 'Bug fix',
+        'changed' => 'Feature change',
+        'deprecated' =>  'New deprecation',
+        'removed' => 'Feature removal',
+        'security' => 'Security fix',
+        'performance' => 'Performance improvement',
+        'other' => 'Other',
+    );
     
     protected $options;    
     
@@ -99,6 +109,13 @@ class ChangelogEntry
             $content['author'] = $this->getAuthor();
         } else {
             $content['author'] = "";
+        }
+        
+        if (isset($this->options['type'])) {
+            if (!in_array($this->options['type']->value, array_keys(static::TYPES))) {
+                throw new \Exception(sprintf("Type not know, valid options are: %s", implode(', ', array_keys(static::TYPES))));
+            }  
+            $content['type'] = $this->options['type']->value;
         }
         
         return Yaml::dump($this->removeTrailingWhitespace($content));

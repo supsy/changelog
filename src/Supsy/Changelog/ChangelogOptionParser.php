@@ -17,6 +17,9 @@ class ChangelogOptionParser
 
         $specs->add('m|merge-request:', 'Merge Request ID' )
             ->isa('Number');
+        
+        $specs->add('t|type:', 'Merge Request ID' )
+            ->isa('String');
 
         $specs->add('n|dry-run', 'Don`t actually write anything, just print' );
 
