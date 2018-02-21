@@ -57,7 +57,9 @@ class ChangelogEntry
     }
     
     protected function write() {
-        mkdir($this->getFilePath(), 0755, true);
+        if (!file_exists(self::UNRELEASED_PATH)) {
+            mkdir(self::UNRELEASED_PATH, 0755, true);
+        }
         file_put_contents($this->getFilePath(), $this->getContent());
     }
     
