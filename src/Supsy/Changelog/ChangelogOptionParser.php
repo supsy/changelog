@@ -27,13 +27,16 @@ class ChangelogOptionParser
 
         $specs->add('h|help', 'Print help message' );
 
-        #$printer = new ConsoleOptionPrinter();
-        #echo $printer->render($specs);
-
         $parser = new OptionParser($specs);
 
         try {
             $result = $parser->parse( $argv );
+
+            if (isset($result['help'])) {
+                $printer = new ConsoleOptionPrinter();
+                $message = $printer->render($specs);
+                $this->usage($message);
+            }
 
             return $result;
         } catch( \Exception $e ) {
@@ -42,4 +45,10 @@ class ChangelogOptionParser
         }
     }
 
+    public function usage($message) {
+        echo "Changelog Tool\n\n";
+        echo "Available options:\n";
+        echo $message;
+        exit();
+    }
 }
